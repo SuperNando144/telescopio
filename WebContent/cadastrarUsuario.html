@@ -1,0 +1,53 @@
+<?xml version = "1.0"?>
+ 
+<!DOCTYPE html>
+ 
+<html xmlns = "http://www.w3.org/1999/xhtml">
+ 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<title>Observatorium - Cadastro de Usuário</title>
+	
+	<link rel="stylesheet" type="text/css"
+		href="/resource/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css"
+		href="/resource/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css"
+		href="/resource/css/turtletickets.css">
+	
+	<link rel='stylesheet prefetch'
+		href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+	<link rel='stylesheet prefetch'
+		href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
+	<link rel='stylesheet prefetch'
+		href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+		
+	<script src="<c:url value='/resource/js/jquery-3.2.1.min.js' />"></script>
+	<script src="<c:url value='/resource/js/bootstrap.min.js' />"></script>
+	<script src="<c:url value='/resource/js/jquery.mask.min.js' />"></script>
+</head>
+<body class="body-cadastro-usuario">
+
+	<div class="titulo-cadastro-usuario">
+		<h1>Cadastro de Usuário</h1>
+	</div>
+	<div class="container">
+		<form class="form-cadastro-usuario" action="/cadastro" method="post">
+			<div class="form-group">		    		
+		    		<label for="email">Endereço de Email</label>
+		    		<input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" name="usuario.usu_email">
+		    		<small id="emailHelp" class="form-text text-muted">Nós nunca compartilharemos o seu email com ninguém.</small>
+			</div>
+			
+		  	<div class="form-group">
+		    		<label for="password">Senha</label>
+		    		<input type="password" class="form-control" id="password" placeholder="Senha" name="usuario.usu_senha">
+		  	</div>
+			
+		  	<button type="submit" class="btn">Cadastrar-se</button>
+		</form>
+	</div>
+</body>
+ 
+</html>
