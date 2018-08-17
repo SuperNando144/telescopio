@@ -13,11 +13,18 @@
 		<servlet-name>CadastroServlet</servlet-name> <!-- nome do servlet dentro do web.xml -->
 		<servlet-class>br.edu.ifsp.telescopio.controllers.CadastroServlet</servlet-class> <!-- nome da classe do servlet -->
 	</servlet>
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name> <!-- nome do servlet dentro do web.xml -->
+		<servlet-class>br.edu.ifsp.telescopio.controllers.LoginServlet</servlet-class> <!-- nome da classe do servlet -->
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>CadastroServlet</servlet-name> <!-- servlet a ser mapeado -->
 		<url-pattern>/cadastro</url-pattern> <!-- url que está mapeada para o servlet responder -->
 	</servlet-mapping>
-	
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name> <!-- servlet a ser mapeado -->
+		<url-pattern>/login</url-pattern> <!-- url que está mapeada para o servlet responder -->
+	</servlet-mapping>	
 
 </web-app>

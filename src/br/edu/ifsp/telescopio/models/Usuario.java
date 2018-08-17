@@ -34,6 +34,10 @@ package br.edu.ifsp.telescopio.models;
 		@NotNull
 		private String usu_tipo;
 		
+		@Column(name = "USU_CONF")
+		@NotNull
+		private Boolean usu_conf;
+		
 		@Column(name = "USU_IMG_PATH")
 		private String usu_img_path;
 		
@@ -56,12 +60,13 @@ package br.edu.ifsp.telescopio.models;
 			this.usu_tipo = usu_tipo;
 		}
 		
-		public Usuario(String usu_nome, String usu_email, String usu_senha, String usu_tipo, String usu_img_path){
+		public Usuario(String usu_nome, String usu_email, String usu_senha, String usu_tipo, String usu_img_path, Boolean usu_conf){
 			this.usu_nome = usu_nome;
 			this.usu_email = usu_email;
 			this.usu_senha = usu_senha;
 			this.usu_tipo = usu_tipo;
 			this.usu_img_path = usu_img_path;
+			this.usu_conf = usu_conf;
 		}
 		
 		
@@ -112,10 +117,18 @@ package br.edu.ifsp.telescopio.models;
 		public void setUsu_img_path(String usu_img_path) {
 			this.usu_img_path = usu_img_path;
 		}
+		
+		public Boolean getUsu_conf() {
+			return usu_conf;
+		}
+
+		public void setUsu_conf(Boolean usu_conf) {
+			this.usu_conf = usu_conf;
+		}
 
 		@Override
 		public String toString() {
 			return "Usuario [usu_cod=" + usu_cod + ", usu_nome=" + usu_nome + ", usu_email=" + usu_email + ", usu_senha="
-					+ usu_senha + ", usu_tipo=" + usu_tipo + ", usu_img_path=" + usu_img_path + "]";
+					+ usu_senha + ", usu_tipo=" + usu_tipo + ", usu_img_path=" + usu_img_path + usu_conf + "]";
 		}
 }

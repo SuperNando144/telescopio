@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.edu.ifsp.telescopio.Component.TelescopioMail;
 import br.edu.ifsp.telescopio.dao.usuario.UsuarioDAOImpl;
 import br.edu.ifsp.telescopio.models.Usuario;
 
 public class CadastroServlet extends HttpServlet {
 	private Usuario usuario;
 	private UsuarioDAOImpl dao;
+	private TelescopioMail tm;
 
 	public CadastroServlet() {
 		this.dao = new UsuarioDAOImpl();
@@ -32,11 +34,14 @@ public class CadastroServlet extends HttpServlet {
 		String name = request.getParameter("usuario.usu_name");
 		String email = request.getParameter("usuario.usu_email");
 		String pass = request.getParameter("usuario.usu_senha");
+		tm = new TelescopioMail(email);
 		usuario.setUsu_nome(name);
 		usuario.setUsu_email(email);
 		usuario.setUsu_senha(pass);
+		usuario.setUsu_conf(false);
 		usuario.setUsu_tipo("U");
 		dao.persist(usuario);
+		tm.enviaEmailConfirmando();
 		RequestDispatcher view = request.getRequestDispatcher("noindex.html");
 		view.forward(request, response);
 	}

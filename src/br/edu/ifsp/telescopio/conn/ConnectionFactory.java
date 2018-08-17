@@ -5,9 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
-	public Connection getConnection() throws ClassNotFoundException {
+	public void getConnection() throws ClassNotFoundException {
 		try {
-			return DriverManager.getConnection("jdbc:mysql://telescopio.mysql.uhserver.com/telescopio", "rsovat", "8lk12mop25me.");			
+			 
+			DriverManager.getConnection("jdbc:mysql://telescopio.mysql.uhserver.com/telescopio", "rsovat", "8lk12mop25me.");	
+			System.out.println("banco conectado");
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
