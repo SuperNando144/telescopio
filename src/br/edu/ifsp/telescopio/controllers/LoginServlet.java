@@ -11,33 +11,31 @@ import javax.servlet.http.HttpServletResponse;
 import br.edu.ifsp.telescopio.dao.usuario.UsuarioDAOImpl;
 import br.edu.ifsp.telescopio.models.Usuario;
 
-public class CadastroServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 	private Usuario usuario;
 	private UsuarioDAOImpl dao;
 
-	public CadastroServlet() {
+	public LoginServlet() {
 		this.dao = new UsuarioDAOImpl();
 		this.usuario = new Usuario();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("cadastrarUsuario.html");
+		RequestDispatcher view = request.getRequestDispatcher("login.html");
 		view.forward(request, response);
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String name = request.getParameter("usuario.usu_name");
+		
 		String email = request.getParameter("usuario.usu_email");
 		String pass = request.getParameter("usuario.usu_senha");
-		usuario.setUsu_nome(name);
-		usuario.setUsu_email(email);
-		usuario.setUsu_senha(pass);
-		usuario.setUsu_tipo("U");
-		dao.persist(usuario);
-		RequestDispatcher view = request.getRequestDispatcher("noindex.html");
-		view.forward(request, response);
+		usuario = dao.findByEmail(email);
+		if(usuario.getUsu_senha().equals(pass)) {
+			RequestDispatcher view = request.getRequestDispatcher("noindex.html");
+			view.forward(request, response);
+		}
 	}
 }

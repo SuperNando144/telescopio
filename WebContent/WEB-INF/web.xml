@@ -18,4 +18,6 @@
 		<servlet-name>CadastroServlet</servlet-name> <!-- servlet a ser mapeado -->
 		<url-pattern>/cadastro</url-pattern> <!-- url que está mapeada para o servlet responder -->
 	</servlet-mapping>
+	
+
 </web-app>
