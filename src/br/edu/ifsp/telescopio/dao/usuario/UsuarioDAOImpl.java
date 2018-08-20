@@ -72,6 +72,17 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			return null;
 		}
 	}
+	
+	@Override
+	public Usuario findByCod(Double cod) {
+		Query query = manager.createQuery("SELECT u FROM Usuario u WHERE USU_VER_NUM = :cod").setParameter("cod", cod);
+		try {
+			Usuario user = (Usuario) query.getSingleResult();
+			return user;
+		} catch(Exception e) {
+			return null;
+		}
+	}
 
 }
 

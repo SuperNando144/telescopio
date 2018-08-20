@@ -1,0 +1,40 @@
+package br.edu.ifsp.telescopio.Component;
+
+import java.io.Serializable;
+
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+
+import br.edu.ifsp.telescopio.models.Usuario;
+
+@SessionScoped
+@Named("sessao")
+public class UsuarioSession implements Serializable{
+	private static final long serialVersionUID = -2883031389844933915L;
+	
+	private Usuario logado;
+	
+	public void login(Usuario usuario) {
+		this.logado = usuario;
+	}
+	  
+	public String getNome() {
+		return logado.getUsu_nome();
+	}
+	
+	public Integer getId() {
+		return (int) logado.getUsu_cod();
+	}
+	  
+	public boolean isLogado() {
+		return logado != null;
+	}
+	
+	public void logout() {
+		this.logado = null;
+	}
+	
+	public String getTipoUsuario() {
+		return this.logado.getUsu_tipo();
+	}
+}

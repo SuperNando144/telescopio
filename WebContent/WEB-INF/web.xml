@@ -6,7 +6,7 @@
 	metadata-complete="false" version="3.0">
 
 	<welcome-file-list>
-		<welcome-file>noindex.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
 	<servlet>
@@ -17,6 +17,10 @@
 		<servlet-name>LoginServlet</servlet-name> <!-- nome do servlet dentro do web.xml -->
 		<servlet-class>br.edu.ifsp.telescopio.controllers.LoginServlet</servlet-class> <!-- nome da classe do servlet -->
 	</servlet>
+	<servlet>
+		<servlet-name>ConfirmacaoServlet</servlet-name> <!-- nome do servlet dentro do web.xml -->
+		<servlet-class>br.edu.ifsp.telescopio.controllers.ConfirmacaoServlet</servlet-class> <!-- nome da classe do servlet -->
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>CadastroServlet</servlet-name> <!-- servlet a ser mapeado -->
@@ -25,6 +29,10 @@
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name> <!-- servlet a ser mapeado -->
 		<url-pattern>/login</url-pattern> <!-- url que está mapeada para o servlet responder -->
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>ConfirmacaoServlet</servlet-name> <!-- servlet a ser mapeado -->
+		<url-pattern>/confirmar</url-pattern> <!-- url que está mapeada para o servlet responder -->
 	</servlet-mapping>	
 
 </web-app>

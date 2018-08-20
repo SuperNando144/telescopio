@@ -37,11 +37,14 @@ public class TelescopioMail {
 		});
 	}
 
-	public boolean enviaEmailConfirmando() {
+	public boolean enviaEmailConfirmando(Integer cod) {
 		try {
 
-			String assunto = "Confirme seu email!";
-			String texto = "Confirmar seu email";
+			String assunto = "[Observatorium] Confirme seu email!";
+			String texto = "Obrigado por se cadastrar no sistema Observatorium!\nPara que você acesse a sua conta é necessário confirmar o seu email, entrando no link abaixo:\r\n"
+					+ "http://localhost:8080/confirmar/" + 
+					"\nÉ necessário utilizar o código seguinte para a validação " + cod +
+					"\nQue as estrelas do céu iluminem sua noite!";
 			MimeMessage message = new MimeMessage(this.session);
 
 			message.setFrom(new InternetAddress(this.from));

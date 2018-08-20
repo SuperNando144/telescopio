@@ -1,13 +1,10 @@
-<?xml version = "1.0"?>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-<title>Observatorium - Cadastro de Usu√°rio</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Observatorium - Cadastro de Usu·rio</title>
 
 <link rel="stylesheet" type="text/css"
 	href="/resource/css/bootstrap.min.css">
@@ -19,21 +16,23 @@
 <body class="body-cadastro-usuario">
 
 	<div class="titulo-cadastro-usuario">
-		<h1>Cadastro de Usu√°rio</h1>
+		<h1>Cadastro de Usu·rio</h1>
 	</div>
 	<div class="container">
+		
 		<form class="form-cadastro-usuario" action="/cadastro" method="post">
+			<div class="erro">${errorMessage}</div>
 			<div class="form-group">
-				<label for="email">Nome Completo</label> <input type="email"
+				<label for="name">Nome Completo</label> <input type="text"
 					class="form-control" id="name" aria-describedby="emailHelp"
 					placeholder="Email" name="usuario.usu_name">
 			</div>
 			<div class="form-group">
-				<label for="email">Endere√ßo de Email</label> <input type="email"
+				<label for="email">EndereÁo de Email</label> <input type="email"
 					class="form-control" id="email" aria-describedby="emailHelp"
 					placeholder="Email" name="usuario.usu_email"><small
-					id="emailHelp" class="form-text text-muted">N√≥s nunca
-					compartilharemos o seu email com ningu√©m.</small>
+					id="emailHelp" class="form-text text-muted">NÛs nunca
+					compartilharemos o seu email com ninguÈm.</small>
 			</div>
 
 			<div class="form-group">
@@ -46,5 +45,4 @@
 		</form>
 	</div>
 </body>
-
 </html>
