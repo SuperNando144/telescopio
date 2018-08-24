@@ -21,6 +21,18 @@
 		<servlet-name>ConfirmacaoServlet</servlet-name> <!-- nome do servlet dentro do web.xml -->
 		<servlet-class>br.edu.ifsp.telescopio.controllers.ConfirmacaoServlet</servlet-class> <!-- nome da classe do servlet -->
 	</servlet>
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name> <!-- nome do servlet dentro do web.xml -->
+		<servlet-class>br.edu.ifsp.telescopio.controllers.LogoutServlet</servlet-class> <!-- nome da classe do servlet -->
+	</servlet>
+	<servlet>
+		<servlet-name>CoordenadasServlet</servlet-name> <!-- nome do servlet dentro do web.xml -->
+		<servlet-class>br.edu.ifsp.telescopio.controllers.CoordenadasServlet</servlet-class> <!-- nome da classe do servlet -->
+	</servlet>
+	<servlet>
+		<servlet-name>TelescopioServlet</servlet-name> <!-- nome do servlet dentro do web.xml -->
+		<servlet-class>br.edu.ifsp.telescopio.controllers.TelescopioServlet</servlet-class> <!-- nome da classe do servlet -->
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>CadastroServlet</servlet-name> <!-- servlet a ser mapeado -->
@@ -33,6 +45,18 @@
 	<servlet-mapping>
 		<servlet-name>ConfirmacaoServlet</servlet-name> <!-- servlet a ser mapeado -->
 		<url-pattern>/confirmar</url-pattern> <!-- url que está mapeada para o servlet responder -->
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name> <!-- servlet a ser mapeado -->
+		<url-pattern>/logout</url-pattern> <!-- url que está mapeada para o servlet responder -->
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>CoordenadasServlet</servlet-name> <!-- servlet a ser mapeado -->
+		<url-pattern>/coordenadas</url-pattern> <!-- url que está mapeada para o servlet responder -->
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>TelescopioServlet</servlet-name> <!-- servlet a ser mapeado -->
+		<url-pattern>/telescopio</url-pattern> <!-- url que está mapeada para o servlet responder -->
 	</servlet-mapping>	
 
 </web-app>

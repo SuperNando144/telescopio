@@ -5,7 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Observatorium</title>
+<title>Observatorium- Coordenadas</title>
+
+<link rel="shortcut icon" type="image/x-icon"
+	href="/resource/img/observa-favicon.ico">
 <link rel="stylesheet" type="text/css"
 	href="/resource/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
@@ -13,8 +16,6 @@
 <link rel="stylesheet" type="text/css"
 	href="/resource/css/observatorium.css">
 
-<link rel="shortcut icon" type="image/x-icon"
-	href="/resource/img/observa-favicon.ico">
 <link rel='stylesheet prefetch'
 	href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
 <link rel='stylesheet prefetch'
@@ -30,14 +31,14 @@
 <body>
 	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="#"><img src="/resource/img/logo.png"
+		<a class="navbar-brand" href="/"><img src="/resource/img/logo.png"
 			height="56px"></a>
 		<ul class="nav navbar-nav">
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<c:if test="${tipo == 'U'}">
 				<li><a href="/agenda">Agenda</a></li>
-				<li><a href="/coordenadas">Acessar Telescópio</a></li>
+				<li><a href="#">Acessar Telescópio</a></li>
 				<li><a href="/logout">Logout</a></li>
 			</c:if>
 			<c:if test="${tipo == 'A'}">
@@ -55,25 +56,46 @@
 		</ul>
 	</div>
 	</nav>
-	<div class="row eventoIndex">
-		<div class="col-md-12 titulo">
-			<center><img src="/resource/img/logo.png"
-			height="56px"></a></center>
-		</div>
+	<div class="container">
 
-		<div class="col-md-12 descricao">
-			<p>O Projeto Observatorium é uma proposta nova cujo objetivo é o
-				incentivo a alunos do Ensino Médio de escolas públicas por temas
-				relacionados a Astronomia e as Ciências Naturais. Por meio de
-				sistemas integrados de Arduíno e Raspberry Pi 3 a um telescópio
-				real, o usuário estaria no comando dele podendo escolher qual astro
-				celestel observar em uma noite limpa.</p>
-				<center><img src="/resource/img/foto-telescopio.png" width="300px" height="200px"></center>
-		</div>
+		<c:if test="${tipo == null}">
+			<div class="row eventoIndex">
+				<div class="col-md-12 titulo">
+					<p>Você não tem permissão para acessar esta página.</p>
+				</div>
+			</div>
+		</c:if>
+
+		<c:if test="${tipo == 'U'}">
+			<div class="row eventoIndex">
+
+				<form action="/telescopio"
+					method="post">
+					<div class="erro">${errorMessage}</div>
+					<div class="col-md-12">
+						<h2>Coordenadas do Corpo Celeste</h2>
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="tituloEvento">Digite o ângulo de azimute
+							(0-360º)</label> <input type="text" class="form-control" id="azimute"
+							name="coordenada.azimute"
+							placeholder="Digite o ângulo de azimute (0-360º)">
+					</div>
+					<div class="form-group col-md-12">
+						<label for="tituloEvento">Digite o ângulo de azimute
+							(0-180º)</label> <input type="text" class="form-control" id="azimute"
+							name="coordenada.azimute"
+							placeholder="Digite o ângulo de azimute (0-180º)">
+					</div>
+
+					<button type="submit" class="btn">Posicionar Telescópio</button>
+				</form>
+			</div>
+		</c:if>
 
 	</div>
 
-	</div>
 
 	<footer class="rodape">
 	<div class="container-fluid">

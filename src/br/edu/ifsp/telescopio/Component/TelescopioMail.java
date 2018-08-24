@@ -41,16 +41,19 @@ public class TelescopioMail {
 		try {
 
 			String assunto = "[Observatorium] Confirme seu email!";
-			String texto = "Obrigado por se cadastrar no sistema Observatorium!\nPara que você acesse a sua conta é necessário confirmar o seu email, entrando no link abaixo:\r\n"
-					+ "http://localhost:8080/confirmar/" + 
-					"\nÉ necessário utilizar o código seguinte para a validação " + cod +
-					"\nQue as estrelas do céu iluminem sua noite!";
 			MimeMessage message = new MimeMessage(this.session);
-
 			message.setFrom(new InternetAddress(this.from));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(this.to));
 			message.setSubject(assunto);
-			message.setText(texto);
+			message.setContent("<html><body><header>"
+					+ "<center><img src=\"https://i.imgur.com/rJrFzqe.png\" alt=\"Observatorium\"></center>" + 
+					"</header><center><h2>" 
+					+ "Obrigado por se cadastrar no sistema Observatorium!<br/>Para que você acesse a sua conta é necessário confirmar o seu email, entrando no link abaixo:<br/>" +
+					"<a href=\"http://telescopio.dominiotemporario.com/confirmar\">Confirme seu email!</a><br/>" +
+					"Para a verificação será necessário utilizar o seguinte código:<br/>" + cod +
+					"</h2><h4><i>Que as estrelas do céu iluminem sua noite!</i></h4>" +
+					"<h5>Equipe Observatorium</h5>" +
+					"</center></body></html>", "text/html");
 
 			Transport.send(message);
 
