@@ -78,15 +78,15 @@
 
 					<div class="form-group col-md-12">
 						<label for="tituloEvento">Digite o ângulo de azimute
-							(0-360º)</label> <input type="text" class="form-control" id="azimute"
+							(-180 à 180º)</label> <input type="text" class="form-control" id="azimute"
 							name="coordenada.azimute"
-							placeholder="Digite o ângulo de azimute (0-360º)">
+							placeholder="Digite o ângulo de azimute (-180 à 180º)">
 					</div>
 					<div class="form-group col-md-12">
-						<label for="tituloEvento">Digite o ângulo de azimute
-							(0-180º)</label> <input type="text" class="form-control" id="azimute"
-							name="coordenada.azimute"
-							placeholder="Digite o ângulo de azimute (0-180º)">
+						<label for="tituloEvento">Digite o ângulo de declinação
+							(0 à 90º)</label> <input type="text" class="form-control" id="declinacao"
+							name="coordenada.declinacao"
+							placeholder="Digite o ângulo de declinação (0 à 90º)">
 					</div>
 
 					<button type="submit" class="btn">Posicionar Telescópio</button>

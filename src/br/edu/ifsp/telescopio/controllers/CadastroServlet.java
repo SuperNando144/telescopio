@@ -21,9 +21,6 @@ public class CadastroServlet extends HttpServlet {
 	private Random rand;
 
 	public CadastroServlet() {
-		this.dao = new UsuarioDAOImpl();
-		this.usuario = new Usuario();
-		this.rand = new Random();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -35,6 +32,9 @@ public class CadastroServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		this.dao = new UsuarioDAOImpl();
+		this.usuario = new Usuario();
+		this.rand = new Random();
 		String name = request.getParameter("usuario.usu_name");
 		String email = request.getParameter("usuario.usu_email");
 		String pass = request.getParameter("usuario.usu_senha");
@@ -43,9 +43,17 @@ public class CadastroServlet extends HttpServlet {
 			request.setAttribute("errorMessage", "Um dos campos está vazio.");
 			request.getRequestDispatcher("cadastrarUsuario.jsp").forward(request, response);
 		}
+		usuario.setUsu_nome(name);
+		usuario.setUsu_email(email);
+		usuario.setUsu_senha(pass);
+		usuario.setUsu_conf(false);
+		usuario.setUsu_tipo("U");
+		usuario.setUsu_ver_num(random);
+		dao.conecta();
+		dao.persist(usuario);
+		dao.fechar();
 		
-		
-		if(dao.findByEmail(email)==null) {
+		/*if(dao.findByEmail(email)==null) {
 			tm = new TelescopioMail(email);
 			usuario.setUsu_nome(name);
 			usuario.setUsu_email(email);
@@ -53,13 +61,13 @@ public class CadastroServlet extends HttpServlet {
 			usuario.setUsu_conf(false);
 			usuario.setUsu_tipo("U");
 			usuario.setUsu_ver_num(random);
-			dao.persist(usuario);
+			//dao.persist(usuario);
 			tm.enviaEmailConfirmando(random);
 			RequestDispatcher view = request.getRequestDispatcher("index.jsp");
 			view.forward(request, response);
 		}else {
 			request.setAttribute("errorMessage", "Já existe um cadastro com esse email.");
 			request.getRequestDispatcher("cadastrarUsuario.jsp").forward(request, response);
-		}
+		}*/
 	}
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Observatorium - Coordenadas</title>
+<title>Observatorium - Telescópio</title>
 <link rel="shortcut icon" type="image/x-icon"
 	href="/resource/img/observa-favicon.ico">
 <link rel="stylesheet" type="text/css"

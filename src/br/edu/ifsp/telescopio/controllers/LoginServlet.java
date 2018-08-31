@@ -19,8 +19,6 @@ public class LoginServlet extends HttpServlet {
 	private UsuarioDAOImpl dao;
 	
 	public LoginServlet() {
-		this.dao = new UsuarioDAOImpl();
-		this.usuario = new Usuario();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,6 +34,8 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		this.dao = new UsuarioDAOImpl();
+		this.usuario = new Usuario();
 		HttpSession session = request.getSession();
 		String email = request.getParameter("usuario.usu_email");
 		String pass = MD5Converter.convertToMd5(request.getParameter("usuario.usu_senha"));
@@ -50,20 +50,22 @@ public class LoginServlet extends HttpServlet {
 		if(usuario == null) {
 			request.setAttribute("errorMessage", "Cadastro não existente.");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
-		}
-		if(!usuario.getUsu_conf()) {
-			request.setAttribute("errorMessage", "Confirme seu cadastro no link enviado no seu email.");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}else {
+			if(!usuario.getUsu_conf()) {
+				request.setAttribute("errorMessage", "Confirme seu cadastro no link enviado no seu email.");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+			}
+			
+			if(usuario.getUsu_senha().equals(pass)) {
+				session.setAttribute("logado", "1");
+				session.setAttribute("tipo", usuario.getUsu_tipo());
+				RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+				view.forward(request, response);
+			}else {
+				request.setAttribute("errorMessage", "Senha incorreta.");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
+			}
 		}
 		
-		if(usuario.getUsu_senha().equals(pass)) {
-			session.setAttribute("logado", "1");
-			session.setAttribute("tipo", usuario.getUsu_tipo());
-			RequestDispatcher view = request.getRequestDispatcher("index.jsp");
-			view.forward(request, response);
-		}else {
-			request.setAttribute("errorMessage", "Senha incorreta.");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-		}
 	}
 }
