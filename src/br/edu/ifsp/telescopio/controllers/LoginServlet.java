@@ -19,6 +19,8 @@ public class LoginServlet extends HttpServlet {
 	private UsuarioDAOImpl dao;
 	
 	public LoginServlet() {
+		this.dao = new UsuarioDAOImpl();
+		this.usuario = new Usuario();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,13 +36,12 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		this.dao = new UsuarioDAOImpl();
-		this.usuario = new Usuario();
 		HttpSession session = request.getSession();
 		String email = request.getParameter("usuario.usu_email");
 		String pass = MD5Converter.convertToMd5(request.getParameter("usuario.usu_senha"));
+		dao.conecta();
 		usuario = dao.findByEmail(email);
-		
+		dao.fechar();
 		if((email == null)||(pass == null)) {
 			request.setAttribute("errorMessage", "Campo de email/senha vazio.");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -58,7 +59,10 @@ public class LoginServlet extends HttpServlet {
 			
 			if(usuario.getUsu_senha().equals(pass)) {
 				session.setAttribute("logado", "1");
+				dao.conecta();
 				session.setAttribute("tipo", usuario.getUsu_tipo());
+				session.setAttribute("cod", usuario.getUsu_cod());
+				dao.fechar();
 				RequestDispatcher view = request.getRequestDispatcher("index.jsp");
 				view.forward(request, response);
 			}else {

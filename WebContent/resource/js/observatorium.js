@@ -1,4 +1,4 @@
 // JS de captura de sessão
 String tipo=(String)session.getAttribute("tipo");
-String nome=(String)session.getAttribute("nome");
+String cod=(Long)session.getAttribute("cod");
 Integer logado=(Integer)session.getAttribute("logado");

@@ -71,11 +71,9 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	
 	@Override
 	public Usuario findByEmail(String email) {
-		//this.manager = FactoryEntityManager.getEntityManager();
 		Query query = manager.createQuery("SELECT u FROM Usuario u WHERE USU_EMAIL = :email").setParameter("email", email);
 		try {
 			Usuario user = (Usuario) query.getSingleResult();
-			//this.manager.close();
 			return user;
 		} catch(Exception e) {
 			return null;
@@ -84,6 +82,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	
 	@Override
 	public Usuario findByCod(Double cod) {
+		
 		Query query = manager.createQuery("SELECT u FROM Usuario u WHERE USU_VER_NUM = :cod").setParameter("cod", cod);
 		try {
 			Usuario user = (Usuario) query.getSingleResult();

@@ -37,10 +37,12 @@ public class ConfirmacaoServlet extends HttpServlet {
 			request.setAttribute("errorMessage", "Um dos campos está vazio.");
 			request.getRequestDispatcher("confirma.jsp").forward(request, response);
 		}
-
+		dao.conecta();
 		usuario = dao.findByCod(Double.valueOf(cod));
-		
+		dao.fechar();
+		dao.conecta();
 		if (usuario.getUsu_conf()) {
+			dao.fechar();
 			request.setAttribute("errorMessage", "Esse código expirou.");
 			request.getRequestDispatcher("confirma.jsp").forward(request, response);			
 		}

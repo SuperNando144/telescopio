@@ -8,7 +8,7 @@
 	
 		<!-- entidade mapeada -->
 		<class>br.edu.ifsp.telescopio.models.Usuario</class>
-		
+		<class>br.edu.ifsp.telescopio.models.Agenda</class>
 		<properties>
 			<!-- dados da conexao -->
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
@@ -17,6 +17,12 @@
 			<property name="javax.persistence.jdbc.password" value="8lk12mop25me." />
 			
 			<!-- 
+			
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://telescopio.c5nk8d7lhqjn.us-east-2.rds.amazonaws.com:3306/telescopio" />
+			<property name="javax.persistence.jdbc.user" value="fernando" />
+			<property name="javax.persistence.jdbc.password" value="8lk12mop25me." />
+			
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://telescopio.mysql.uhserver.com/telescopio" />
 			<property name="javax.persistence.jdbc.user" value="rsovat" />
 			<property name="javax.persistence.jdbc.password" value="8lk12mop25me." />

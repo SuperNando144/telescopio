@@ -33,7 +33,11 @@
 		<servlet-name>TelescopioServlet</servlet-name> <!-- nome do servlet dentro do web.xml -->
 		<servlet-class>br.edu.ifsp.telescopio.controllers.TelescopioServlet</servlet-class> <!-- nome da classe do servlet -->
 	</servlet>
-
+	<servlet>
+		<servlet-name>AgendaServlet</servlet-name> <!-- nome do servlet dentro do web.xml -->
+		<servlet-class>br.edu.ifsp.telescopio.controllers.AgendaServlet</servlet-class> <!-- nome da classe do servlet -->
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>CadastroServlet</servlet-name> <!-- servlet a ser mapeado -->
 		<url-pattern>/cadastro</url-pattern> <!-- url que está mapeada para o servlet responder -->
@@ -58,5 +62,8 @@
 		<servlet-name>TelescopioServlet</servlet-name> <!-- servlet a ser mapeado -->
 		<url-pattern>/telescopio</url-pattern> <!-- url que está mapeada para o servlet responder -->
 	</servlet-mapping>	
-
+	<servlet-mapping>
+		<servlet-name>AgendaServlet</servlet-name> <!-- servlet a ser mapeado -->
+		<url-pattern>/agenda</url-pattern> <!-- url que está mapeada para o servlet responder -->
+	</servlet-mapping>	
 </web-app>

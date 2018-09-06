@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Observatorium - Coordenadas</title>
+<title>Observatorium - Agenda</title>
+
 <link rel="shortcut icon" type="image/x-icon"
 	href="/resource/img/observa-favicon.ico">
 <link rel="stylesheet" type="text/css"
@@ -28,6 +29,11 @@
 <script src="/resource/js/observatorium.js"></script>
 </head>
 <body>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#dataAgendamento').mask('99/99/9999');
+		});
+	</script>
 	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="/"><img src="/resource/img/logo.png"
@@ -36,12 +42,12 @@
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<c:if test="${tipo == 'U'}">
-				<li><a href="/agenda">Agenda</a></li>
-				<li><a href="#">Acessar Telescópio</a></li>
+				<li><a href="#">Agenda</a></li>
+				<li><a href="/coordenadas">Acessar Telescópio</a></li>
 				<li><a href="/logout">Logout</a></li>
 			</c:if>
 			<c:if test="${tipo == 'A'}">
-				<li><a href="/agenda">Agenda</a></li>
+				<li><a href="#">Agenda</a></li>
 				<li><a href="/telescopio">Telescópio</a></li>
 				<li><a href="/cadastro">Cadastrar Usuário</a></li>
 				<li><a href="/logout">Logout</a></li>
@@ -66,12 +72,21 @@
 		</c:if>
 
 		<c:if test="${tipo == 'U'}">
-			<div class="row telescopio">
-				<div class="col-md-12">
-					<center>
-						<img src="http://177.194.47.47:8081/" alt="Telescópio">
-					</center>
-				</div>
+			<div class="row eventoIndex">
+
+				<form action="/agenda" method="post">
+					<div class="erro">${errorMessage}</div>
+					<div class="col-md-12">
+						<h2>Agendamento de Telescópio</h2>
+					</div>
+
+					<div class="form-group col-md-12">
+							<label for="dataEvento">Data do Agendamento</label> <input type="text"
+								class="form-control" id="dataAgendamento" name="age_data" placeholder="dd/mm/aaaa">
+						</div>
+
+					<button type="submit" class="btn">Agendar Acesso</button>
+				</form>
 			</div>
 		</c:if>
 

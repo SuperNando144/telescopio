@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Observatorium- Coordenadas</title>
+<title>Observatorium - Coordenadas</title>
 
 <link rel="shortcut icon" type="image/x-icon"
 	href="/resource/img/observa-favicon.ico">
@@ -69,7 +69,7 @@
 		<c:if test="${tipo == 'U'}">
 			<div class="row eventoIndex">
 
-				<form action="/telescopio"
+				<form action="/coordenadas"
 					method="post">
 					<div class="erro">${errorMessage}</div>
 					<div class="col-md-12">

@@ -45,11 +45,11 @@ public class TelescopioMail {
 			message.setFrom(new InternetAddress(this.from));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(this.to));
 			message.setSubject(assunto);
-			message.setContent("<html><body><header>"
+			message.setContent("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=ISO-8859-1\"></head><body><header>"
 					+ "<center><img src=\"https://i.imgur.com/rJrFzqe.png\" alt=\"Observatorium\"></center>" + 
 					"</header><center><h2>" 
 					+ "Obrigado por se cadastrar no sistema Observatorium!<br/>Para que você acesse a sua conta é necessário confirmar o seu email, entrando no link abaixo:<br/>" +
-					"<a href=\"http://telescopio.dominiotemporario.com/confirmar\">Confirme seu email!</a><br/>" +
+					"<a href=\"http://observatorium-env.icuyrk26x8.us-east-2.elasticbeanstalk.com/confirmar\">Confirme seu email!</a><br/>" +
 					"Para a verificação será necessário utilizar o seguinte código:<br/>" + cod +
 					"</h2><h4><i>Que as estrelas do céu iluminem sua noite!</i></h4>" +
 					"<h5>Equipe Observatorium</h5>" +

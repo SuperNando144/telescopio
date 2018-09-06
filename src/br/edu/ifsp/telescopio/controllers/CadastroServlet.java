@@ -43,17 +43,9 @@ public class CadastroServlet extends HttpServlet {
 			request.setAttribute("errorMessage", "Um dos campos está vazio.");
 			request.getRequestDispatcher("cadastrarUsuario.jsp").forward(request, response);
 		}
-		usuario.setUsu_nome(name);
-		usuario.setUsu_email(email);
-		usuario.setUsu_senha(pass);
-		usuario.setUsu_conf(false);
-		usuario.setUsu_tipo("U");
-		usuario.setUsu_ver_num(random);
 		dao.conecta();
-		dao.persist(usuario);
-		dao.fechar();
-		
-		/*if(dao.findByEmail(email)==null) {
+		if(dao.findByEmail(email)==null) {
+			dao.fechar();
 			tm = new TelescopioMail(email);
 			usuario.setUsu_nome(name);
 			usuario.setUsu_email(email);
@@ -61,13 +53,15 @@ public class CadastroServlet extends HttpServlet {
 			usuario.setUsu_conf(false);
 			usuario.setUsu_tipo("U");
 			usuario.setUsu_ver_num(random);
-			//dao.persist(usuario);
+			dao.conecta();
+			dao.persist(usuario);
+			dao.fechar();
 			tm.enviaEmailConfirmando(random);
 			RequestDispatcher view = request.getRequestDispatcher("index.jsp");
 			view.forward(request, response);
 		}else {
 			request.setAttribute("errorMessage", "Já existe um cadastro com esse email.");
 			request.getRequestDispatcher("cadastrarUsuario.jsp").forward(request, response);
-		}*/
+		}
 	}
 }
