@@ -72,6 +72,7 @@
 				<form action="/coordenadas"
 					method="post">
 					<div class="erro">${errorMessage}</div>
+					<div class="erro">${errorMessage2}</div>
 					<div class="col-md-12">
 						<h2>Coordenadas do Corpo Celeste</h2>
 					</div>

@@ -35,6 +35,9 @@ public class CoordenadasServlet extends HttpServlet {
 		SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
 		long cod = (Long) session.getAttribute("cod");
 		Date date = new Date();
+		Double azimute = Double.parseDouble(request.getParameter("coordenada.azimute"));
+		Double declinacao = Double.parseDouble(request.getParameter("coordenada.declinacao"));
+		
 		try {
 			date = this.converter(date);
 		} catch (ParseException e) {
@@ -46,19 +49,31 @@ public class CoordenadasServlet extends HttpServlet {
 		dao.fechar();
 		if (agenda == null) {
 			request.setAttribute("errorMessage", "Não existem agendamentos para essa data.");
+			if(verificarCoordenadas(azimute, declinacao)) {
+				request.setAttribute("errorMessage2", "Coordenadas inválidas.");
+			}
 			request.getRequestDispatcher("coordenadas.jsp").forward(request, response);
 		} else {
 			if ((Long) session.getAttribute("cod") != agenda.getUsu_cod().getUsu_cod()) {
 				request.setAttribute("errorMessage", "Você não tem permissão para utilizar o telescópio nessa data.");
+				if(verificarCoordenadas(azimute, declinacao)) {
+					request.setAttribute("errorMessage2", "Coordenadas inválidas.");
+				}
 				request.getRequestDispatcher("coordenadas.jsp").forward(request, response);
 			} else {
-				Double azimute = Double.parseDouble(request.getParameter("coordenada.azimute"));
-				Double declinacao = Double.parseDouble(request.getParameter("coordenada.declinacao"));
+				
 				if ((azimute < -180) || (azimute > 180) || (declinacao < 0) || (declinacao > 90)) {
+					request.setAttribute("errorMessage", "Coordenadas inválidas.");
+					if(verificarCoordenadas(azimute, declinacao)) {
+						request.setAttribute("errorMessage2", "Coordenadas inválidas.");
+					}
+					request.getRequestDispatcher("coordenadas.jsp").forward(request, response);
+				}
+				
+				if(verificarCoordenadas(azimute, declinacao)) {
 					request.setAttribute("errorMessage", "Coordenadas inválidas.");
 					request.getRequestDispatcher("coordenadas.jsp").forward(request, response);
 				}
-
 				agenda.setAge_coord_azimute(azimute);
 				agenda.setAge_coord_declin(declinacao);
 				dao.conecta();
@@ -77,5 +92,13 @@ public class CoordenadasServlet extends HttpServlet {
 		String datas = fmt.format(data);
 		DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy");
 		return sourceFormat.parse(datas);
+	}
+	
+	public boolean verificarCoordenadas(Double azimute, Double declinacao) {
+		if ((azimute < -180) || (azimute > 180) || (declinacao < 0) || (declinacao > 90)) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 }

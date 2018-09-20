@@ -57,18 +57,33 @@
 	</nav>
 	<div class="row eventoIndex">
 		<div class="col-md-12 titulo">
-			<center><img src="/resource/img/logo.png"
-			height="56px"></a></center>
+			<center>
+				<img src="/resource/img/logo.png" height="56px"></a>
+			</center>
 		</div>
 
 		<div class="col-md-12 descricao">
-			<p>O Projeto Observatorium é uma proposta nova cujo objetivo é o
-				incentivo a alunos do Ensino Médio de escolas públicas por temas
-				relacionados a Astronomia e as Ciências Naturais. Por meio de
-				sistemas integrados de Arduíno e Raspberry Pi 3 a um telescópio
-				real, o usuário estaria no comando dele podendo escolher qual astro
-				celestel observar em uma noite limpa.</p>
-				<center><img src="/resource/img/foto-telescopio.png" width="300px" height="200px"></center>
+			<p>O Projeto Observatorium é uma proposta nova desenvolvida como
+				um trabalho de conclusão de curso do aluno Fernando Keller Haddad do
+				Instituto Federal de Ciência, Tecnologia e Educação do Câmpus
+				Campinas e que apresenta um sistema de controle e posicionamento de
+				um telescópio óptico. Por meio de tal sistema nossos usuários
+				estarão no controle desse telescópio podendo escolher qual astro
+				observar durante o período noturno. Este projeto tem foco na área de
+				ensino, podendo ser utilizado em aulas normais e de campo, assim
+				estimulando o interesse dos alunos de tais instituições temas
+				relacionados a Astronomia e as Ciências Naturais.</p>
+			<center>
+				<img src="/resource/img/foto-telescopio.png" width="300px"
+					height="200px"> <br />
+				<p>Esse sitema funcionada utilizando-se de uma integração entre
+					placas de Arduíno, esta que fará todo o posicionamento do
+					telescópio, e Raspberry Pi 3, esta que fará a transmissão das
+					coordenadas para o telescópio, conectadas a um telescópio óptico,
+					transmitindo em tempo real as imagens capturadas por este
+					telescópio.</p>
+				<i><h5>Que as estrelas do céu iluminem sua noite!</h5></i>
+			</center>
 		</div>
 
 	</div>

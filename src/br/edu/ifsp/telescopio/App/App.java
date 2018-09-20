@@ -19,13 +19,33 @@ import br.edu.ifsp.telescopio.models.Usuario;
 public class App {
 	
 	public static void main(String[] args) throws ClassNotFoundException, ParseException {
-		AgendaDAOImpl dao = new AgendaDAOImpl();
 		Date date = new Date();
-		SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
-		String datas = fmt.format(date);
 		DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy");
-		System.out.println(sourceFormat.parse(datas));
+		try {
+			date = sourceFormat.parse("11/09/2018");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Date date2 = new Date();
+		try {
+			date2 = converter(date2);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		System.out.println(date);
+		System.out.println(date2);
+		System.out.println(date.compareTo(date2));
 		
 		}
+	
+	public static Date converter(Date data) throws ParseException {
+		SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+		String datas = fmt.format(data);
+		DateFormat sourceFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return sourceFormat.parse(datas);
+	}
 
 }
